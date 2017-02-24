@@ -164,6 +164,14 @@ namespace NUnit.VisualStudio.TestAdapter
                         Debugger.Launch();
 #endif
                     TestCase testCase = testConverter.ConvertTestCase(testNode);
+
+                    TestLog.Info(string.Format("NUnit Adapter {0}: Discovered TestCase FQN: {1}, Executor uri: {2}, Source: {3}, Id: {4}", 
+                        AdapterVersion,
+                        testCase.FullyQualifiedName, 
+                        testCase.ExecutorUri, 
+                        testCase.Source, 
+                        testCase.Id));
+
                     discoverySink.SendTestCase(testCase);
                     cases += 1;
                 }
